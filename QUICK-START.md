@@ -6,7 +6,7 @@ Run these commands in your PowerShell terminal:
 
 ```powershell
 # 1. Navigate to your project
-cd "c:\Users\User\CODERIST\chatbot"
+cd path/to/your/project
 
 # 2. Ensure package-lock.json exists
 npm install --package-lock-only
