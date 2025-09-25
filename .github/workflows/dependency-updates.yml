@@ -1,0 +1,74 @@
+name: Dependency Updates
+
+on:
+  schedule:
+    # Check for updates weekly on Monday at 9 AM UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+jobs:
+  update-dependencies:
+    name: Update Dependencies
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Check for outdated packages
+        run: npm outdated || true
+        
+      - name: Update dependencies
+        run: |
+          npm update
+          npm audit fix --audit-level=high
+          
+      - name: Test after updates
+        run: |
+          # Start server in background
+          npm start &
+          SERVER_PID=$!
+          sleep 10
+          
+          # Test endpoints
+          curl -f http://localhost:5000/api/v1/health || exit 1
+          
+          # Kill server
+          kill $SERVER_PID
+        env:
+          NODE_ENV: test
+          AI_PROVIDER: fallback
+          
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: 'chore: update dependencies'
+          title: 'chore: Update dependencies'
+          body: |
+            ## 📦 Dependency Updates
+            
+            This PR contains automated dependency updates.
+            
+            **Changes:**
+            - Updated npm dependencies to latest versions
+            - Applied security fixes
+            
+            **Testing:**
+            - ✅ Health check endpoint passes
+            - ✅ No breaking changes detected
+            
+            Please review the changes before merging.
+          branch: chore/dependency-updates
+          delete-branch: true

@@ -11,7 +11,11 @@
     "docker:build": "docker build -t portfolio-chatbot .",
     "docker:run": "docker run -p 5000:5000 --env-file .env portfolio-chatbot",
     "docker:compose": "docker-compose up -d",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node test/api-test.js",
+    "test:health": "curl -f http://localhost:5000/api/v1/health",
+    "test:api": "node test/api-test.js",
+    "lint": "echo 'Linting placeholder - add ESLint if needed'",
+    "security": "npm audit --audit-level=high",
     "old-start": "node server-updated.js"
   },
   "dependencies": {
