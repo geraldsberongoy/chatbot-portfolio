@@ -1,0 +1,24 @@
+# Docker Compose for Portfolio Chatbot Microservice
+services:
+  portfolio-chatbot:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - PORTFOLIO_OWNER=Gerald
+      - AI_PROVIDER=gemini
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "node", "healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
