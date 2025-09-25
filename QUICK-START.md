@@ -54,8 +54,12 @@ After running the commands above, do these in your browser:
 | Name                 | Value                                                                      |
 | -------------------- | -------------------------------------------------------------------------- |
 | `GEMINI_API_KEY`     | Your actual Gemini API key                                                 |
-| `PRODUCTION_API_KEY` | Generate with: `[System.Web.Security.Membership]::GeneratePassword(32, 0)` |
+| `PRODUCTION_API_KEY` | Generate with:<br>• PowerShell: `-join ((48..122) | Get-Random -Count 32 | % {[char]$_})`<br>• Unix/macOS: `openssl rand -base64 32` |
 
+> **Tip:**  
+> - On Windows/PowerShell, run: `-join ((48..122) | Get-Random -Count 32 | % {[char]$_})`  
+> - On macOS/Linux/WSL, run: `openssl rand -base64 32`  
+> Both commands will generate a strong random password for your API key.
 ## 🧪 **Test Your Setup:**
 
 ```powershell
