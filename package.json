@@ -1,0 +1,35 @@
+{
+  "name": "gerald-portfolio-chatbot",
+  "version": "1.0.0",
+  "description": "A chatbot for Gerald's portfolio website",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node microservice-server.js",
+    "dev": "nodemon microservice-server.js",
+    "microservice": "node microservice-server.js",
+    "docker:build": "docker build -t portfolio-chatbot .",
+    "docker:run": "docker run -p 5000:5000 --env-file .env portfolio-chatbot",
+    "docker:compose": "docker-compose up -d",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "old-start": "node server-updated.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "openai": "^4.20.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "keywords": [
+    "chatbot",
+    "portfolio",
+    "openai",
+    "express"
+  ],
+  "author": "Gerald",
+  "license": "MIT"
+}
