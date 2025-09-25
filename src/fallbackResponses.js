@@ -8,11 +8,11 @@ export class FallbackChatbot {
   matchesKeywords(message, keywords) {
     // Add common synonyms for better matching
     const synonyms = {
-      'education': ['school', 'university', 'college', 'academic', 'studying', 'learning'],
-      'project': ['app', 'application', 'system', 'software', 'website', 'program'],
-      'skill': ['technology', 'tech', 'programming', 'coding', 'development', 'language'],
-      'experience': ['work', 'job', 'career', 'employment', 'position', 'role'],
-      'contact': ['reach', 'connect', 'email', 'linkedin', 'github', 'social']
+      "education": ["school", "university", "college", "academic", "studying", "learning"],
+      "project": ["app", "application", "system", "software", "website", "program"],
+      "skill": ["technology", "tech", "programming", "coding", "development", "language"],
+      "experience": ["work", "job", "career", "employment", "position", "role"],
+      "contact": ["reach", "connect", "email", "linkedin", "github", "social"]
     };
 
     // Check direct keyword matches
@@ -39,37 +39,37 @@ export class FallbackChatbot {
     }
 
     // Education related questions
-    if (this.matchesKeywords(lowerMessage, ['education', 'school', 'university', 'degree', 'study', 'student'])) {
+    if (this.matchesKeywords(lowerMessage, ["education", "school", "university", "degree", "study", "student"])) {
       return this.getEducationResponse();
     }
     
     // Projects related questions
-    if (this.matchesKeywords(lowerMessage, ['project', 'projects', 'built', 'created', 'developed', 'app', 'application'])) {
+    if (this.matchesKeywords(lowerMessage, ["project", "projects", "built", "created", "developed", "app", "application"])) {
       return this.getProjectsResponse();
     }
     
     // Skills related questions
-    if (this.matchesKeywords(lowerMessage, ['skill', 'skills', 'programming', 'language', 'framework', 'technology', 'tech'])) {
+    if (this.matchesKeywords(lowerMessage, ["skill", "skills", "programming", "language", "framework", "technology", "tech"])) {
       return this.getSkillsResponse();
     }
     
     // Experience related questions
-    if (this.matchesKeywords(lowerMessage, ['experience', 'work', 'job', 'role', 'position', 'career'])) {
+    if (this.matchesKeywords(lowerMessage, ["experience", "work", "job", "role", "position", "career"])) {
       return this.getExperienceResponse();
     }
     
     // Contact related questions
-    if (this.matchesKeywords(lowerMessage, ['contact', 'email', 'reach', 'linkedin', 'github', 'connect'])) {
+    if (this.matchesKeywords(lowerMessage, ["contact", "email", "reach", "linkedin", "github", "connect"])) {
       return this.getContactResponse();
     }
     
     // Certifications
-    if (this.matchesKeywords(lowerMessage, ['certificate', 'certification', 'certified', 'credential'])) {
+    if (this.matchesKeywords(lowerMessage, ["certificate", "certification", "certified", "credential"])) {
       return this.getCertificationsResponse();
     }
     
     // About Gerald
-    if (this.matchesKeywords(lowerMessage, ['about', 'who', 'gerald', 'background', 'bio', 'introduction'])) {
+    if (this.matchesKeywords(lowerMessage, ["about", "who", "gerald", "background", "bio", "introduction"])) {
       return this.getAboutResponse();
     }
     
@@ -79,102 +79,102 @@ export class FallbackChatbot {
   
   getEducationResponse() {
     const education = this.portfolioData.education;
-    return `🎓 **Education**\n\n` +
+    return "🎓 **Education**\n\n" +
            `Gerald is pursuing a **${education.degree}** at ${education.school}.\n` +
            `Expected graduation: ${education.graduation}\n\n` +
-           `**Key Coursework:**\n${education.coursework.slice(0, 5).map(course => `• ${course}`).join('\n')}\n\n` +
-           `**Scholarships:** ${education.scholarships.join(', ')}\n\n` +
-           `Is there anything specific about Gerald's education you'd like to know more about?`;
+           `**Key Coursework:**\n${education.coursework.slice(0, 5).map(course => `• ${course}`).join("\n")}\n\n` +
+           `**Scholarships:** ${education.scholarships.join(", ")}\n\n` +
+           "Is there anything specific about Gerald's education you'd like to know more about?";
   }
   
   getProjectsResponse() {
     const projects = this.portfolioData.projects;
-    return `🚀 **Gerald's Projects**\n\n` +
+    return "🚀 **Gerald's Projects**\n\n" +
            projects.map((project, index) => 
              `**${index + 1}. ${project.name}**\n` +
-             `Tech Stack: ${project.stack.join(', ')}\n` +
+             `Tech Stack: ${project.stack.join(", ")}\n` +
              `${project.details[0]}\n`
-           ).join('\n') +
-           `\nWould you like to know more details about any specific project?`;
+           ).join("\n") +
+           "\nWould you like to know more details about any specific project?";
   }
   
   getSkillsResponse() {
     const skills = this.portfolioData.skills;
-    return `💻 **Gerald's Technical Skills**\n\n` +
-           `**Programming Languages:** ${skills.languages.join(', ')}\n\n` +
-           `**Frameworks & Libraries:** ${skills.frameworks.join(', ')}\n\n` +
-           `**Databases:** ${skills.databases.join(', ')}\n\n` +
-           `**Tools:** ${skills.tools.join(', ')}\n\n` +
-           `Gerald has experience with both frontend and backend development, as well as database management and design tools.`;
+    return "💻 **Gerald's Technical Skills**\n\n" +
+           `**Programming Languages:** ${skills.languages.join(", ")}\n\n` +
+           `**Frameworks & Libraries:** ${skills.frameworks.join(", ")}\n\n` +
+           `**Databases:** ${skills.databases.join(", ")}\n\n` +
+           `**Tools:** ${skills.tools.join(", ")}\n\n` +
+           "Gerald has experience with both frontend and backend development, as well as database management and design tools.";
   }
   
   getExperienceResponse() {
     const experience = this.portfolioData.experience;
-    return `💼 **Gerald's Experience**\n\n` +
+    return "💼 **Gerald's Experience**\n\n" +
            experience.map((exp, index) => 
              `**${index + 1}. ${exp.role}**\n` +
              `${exp.organization} | ${exp.date}\n` +
-             `Key highlights:\n${exp.highlights.map(h => `• ${h}`).join('\n')}\n`
-           ).join('\n') +
-           `\nGerald has shown leadership in web development and cloud computing through his active participation in tech communities.`;
+             `Key highlights:\n${exp.highlights.map(h => `• ${h}`).join("\n")}\n`
+           ).join("\n") +
+           "\nGerald has shown leadership in web development and cloud computing through his active participation in tech communities.";
   }
   
   getContactResponse() {
     const contact = this.portfolioData.contact;
-    return `📞 **Contact Gerald**\n\n` +
+    return "📞 **Contact Gerald**\n\n" +
            `**Email:** ${contact.email}\n` +
            `**LinkedIn:** ${contact.linkedin}\n` +
            `**GitHub:** ${contact.github}\n\n` +
-           `Feel free to reach out to Gerald through any of these channels. He's always open to discussing new opportunities and collaborations!`;
+           "Feel free to reach out to Gerald through any of these channels. He's always open to discussing new opportunities and collaborations!";
   }
   
   getCertificationsResponse() {
     const certifications = this.portfolioData.certifications;
-    return `📜 **Gerald's Certifications**\n\n` +
+    return "📜 **Gerald's Certifications**\n\n" +
            certifications.map((cert, index) => 
              `**${index + 1}. ${cert.title}**\n` +
              `Issued by: ${cert.issuer} | ${cert.date}\n` +
              `${cert.note}\n`
-           ).join('\n') +
-           `\nGerald continues to pursue certifications to stay current with industry trends and technologies.`;
+           ).join("\n") +
+           "\nGerald continues to pursue certifications to stay current with industry trends and technologies.";
   }
   
   getAboutResponse() {
     return `👋 **About Gerald**\n\n${this.portfolioData.profile}\n\n` +
-           `Gerald is passionate about technology and always eager to take on new challenges. He combines his academic knowledge with practical experience gained through various projects and community involvement.\n\n` +
-           `Would you like to know more about his projects, skills, or experience?`;
+           "Gerald is passionate about technology and always eager to take on new challenges. He combines his academic knowledge with practical experience gained through various projects and community involvement.\n\n" +
+           "Would you like to know more about his projects, skills, or experience?";
   }
   
   getDefaultResponse() {
-    return `Hi! I'm Gerald's portfolio chatbot. I can help you learn about:\n\n` +
-           `🎓 **Education** - His degree and coursework\n` +
-           `🚀 **Projects** - Applications and systems he's built\n` +
-           `💻 **Skills** - Programming languages and technologies\n` +
-           `💼 **Experience** - Work experience and roles\n` +
-           `📜 **Certifications** - Professional credentials\n` +
-           `📞 **Contact** - How to reach Gerald\n\n` +
-           `Try asking something like:\n` +
-           `• "Tell me about Gerald's projects"\n` +
-           `• "What skills does Gerald have?"\n` +
-           `• "How can I contact Gerald?"\n\n` +
-           `What would you like to know?`;
+    return "Hi! I'm Gerald's portfolio chatbot. I can help you learn about:\n\n" +
+           "🎓 **Education** - His degree and coursework\n" +
+           "🚀 **Projects** - Applications and systems he's built\n" +
+           "💻 **Skills** - Programming languages and technologies\n" +
+           "💼 **Experience** - Work experience and roles\n" +
+           "📜 **Certifications** - Professional credentials\n" +
+           "📞 **Contact** - How to reach Gerald\n\n" +
+           "Try asking something like:\n" +
+           "• \"Tell me about Gerald's projects\"\n" +
+           "• \"What skills does Gerald have?\"\n" +
+           "• \"How can I contact Gerald?\"\n\n" +
+           "What would you like to know?";
   }
   
   // Check if question is outside Gerald's professional scope
   isOutOfScope(message) {
     const outOfScopeKeywords = [
-      'breakfast', 'lunch', 'dinner', 'food', 'eat', 'meal', 'favorite food',
-      'weather', 'temperature', 'rain', 'sunny',
-      'movie', 'film', 'watch', 'netflix', 'entertainment', 
-      'sport', 'football', 'basketball', 'game', 'play',
-      'girlfriend', 'boyfriend', 'dating', 'relationship', 'family', 'parents',
-      'hobby', 'hobbies', 'fun', 'leisure', 'vacation', 'travel',
-      'politics', 'religion', 'personal life', 'private',
-      'age', 'birthday', 'height', 'weight', 'appearance',
-      'music', 'song', 'band', 'artist', 'listen',
-      'book', 'read', 'novel', 'story',
-      'color', 'favourite color', 'like', 'dislike',
-      'home', 'house', 'address', 'live', 'where do you live'
+      "breakfast", "lunch", "dinner", "food", "eat", "meal", "favorite food",
+      "weather", "temperature", "rain", "sunny",
+      "movie", "film", "watch", "netflix", "entertainment", 
+      "sport", "football", "basketball", "game", "play",
+      "girlfriend", "boyfriend", "dating", "relationship", "family", "parents",
+      "hobby", "hobbies", "fun", "leisure", "vacation", "travel",
+      "politics", "religion", "personal life", "private",
+      "age", "birthday", "height", "weight", "appearance",
+      "music", "song", "band", "artist", "listen",
+      "book", "read", "novel", "story",
+      "color", "favourite color", "like", "dislike",
+      "home", "house", "address", "live", "where do you live"
     ];
     
     return outOfScopeKeywords.some(keyword => message.includes(keyword));
@@ -219,6 +219,6 @@ export class FallbackChatbot {
 
     const randomSet = suggestionSets[Math.floor(Math.random() * suggestionSets.length)];
     
-    return `${randomSet.intro}\n\n**Try asking:**\n${randomSet.suggestions.join('\n')}\n\nWhat would you like to know? ✨`;
+    return `${randomSet.intro}\n\n**Try asking:**\n${randomSet.suggestions.join("\n")}\n\nWhat would you like to know? ✨`;
   }
 }

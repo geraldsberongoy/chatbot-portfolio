@@ -33,7 +33,7 @@ function makeRequest(path, options = {}) {
               data: json,
               headers: res.headers,
             });
-          } catch (e) {
+          } catch (_e) {
             resolve({ status: res.statusCode, data, headers: res.headers });
           }
         });
@@ -94,11 +94,11 @@ const tests = [
     test: async () => {
       const res = await makeRequest("/api/v1/chat", {
         method: "POST",
-        body: '{"message":"test",', // Invalid JSON
+        body: "{\"message\":\"test\",", // Invalid JSON
       });
       if (res.status !== 400)
         throw new Error(`Expected 400, got ${res.status}`);
-      return `✅ Invalid JSON handling works`;
+      return "✅ Invalid JSON handling works";
     },
   },
   {
@@ -110,7 +110,7 @@ const tests = [
       });
       if (res.status !== 400)
         throw new Error(`Expected 400, got ${res.status}`);
-      return `✅ Missing message validation works`;
+      return "✅ Missing message validation works";
     },
   },
   {
@@ -119,7 +119,7 @@ const tests = [
       const res = await makeRequest("/api/v1/nonexistent");
       if (res.status !== 404)
         throw new Error(`Expected 404, got ${res.status}`);
-      return `✅ 404 handler works`;
+      return "✅ 404 handler works";
     },
   },
 ];
