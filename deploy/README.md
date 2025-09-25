@@ -3,6 +3,7 @@
 ## Environment Variables Required
 
 ### Production
+
 ```bash
 export NODE_ENV=production
 export PORT=5000
@@ -15,6 +16,7 @@ export RATE_LIMIT_PER_MINUTE=60
 ```
 
 ### Staging
+
 ```bash
 export NODE_ENV=staging
 export PORT=5000
@@ -27,8 +29,9 @@ export RATE_LIMIT_PER_MINUTE=30
 ## Docker Compose for Different Environments
 
 ### Production (docker-compose.prod.yml)
+
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   portfolio-chatbot:
@@ -49,8 +52,9 @@ services:
 ```
 
 ### Staging (docker-compose.staging.yml)
+
 ```yaml
-version: '3.8'
+version: "3.8"
 
 services:
   portfolio-chatbot:
@@ -69,6 +73,7 @@ services:
 ## Kubernetes Deployment (k8s/)
 
 ### Deployment
+
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -87,35 +92,36 @@ spec:
         app: portfolio-chatbot
     spec:
       containers:
-      - name: chatbot
-        image: ghcr.io/yourusername/gerald-portfolio-chatbot:latest
-        ports:
-        - containerPort: 5000
-        env:
-        - name: NODE_ENV
-          value: "production"
-        - name: PORT
-          value: "5000"
-        envFrom:
-        - secretRef:
-            name: chatbot-secrets
-        livenessProbe:
-          httpGet:
-            path: /api/v1/health
-            port: 5000
-          initialDelaySeconds: 30
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /api/v1/health
-            port: 5000
-          initialDelaySeconds: 5
-          periodSeconds: 5
+        - name: chatbot
+          image: ghcr.io/yourusername/gerald-portfolio-chatbot:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: NODE_ENV
+              value: "production"
+            - name: PORT
+              value: "5000"
+          envFrom:
+            - secretRef:
+                name: chatbot-secrets
+          livenessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 5000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /api/v1/health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 5
 ```
 
 ## Cloud Platform Deployments
 
 ### Vercel (vercel.json)
+
 ```json
 {
   "version": 2,
@@ -139,6 +145,7 @@ spec:
 ```
 
 ### Railway (railway.toml)
+
 ```toml
 [build]
 builder = "nixpacks"
@@ -152,12 +159,13 @@ restartPolicyType = "on_failure"
 name = "NODE_ENV"
 value = "production"
 
-[[deploy.environmentVariables]]  
+[[deploy.environmentVariables]]
 name = "PORT"
 value = "${{ PORT }}"
 ```
 
 ### Render (render.yaml)
+
 ```yaml
 services:
   - type: web
@@ -177,6 +185,7 @@ services:
 ## Manual Deployment Scripts
 
 ### deploy.sh
+
 ```bash
 #!/bin/bash
 

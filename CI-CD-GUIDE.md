@@ -9,21 +9,26 @@ This project implements a comprehensive CI/CD pipeline using GitHub Actions for 
 ### 1. **Main CI/CD Pipeline** (`.github/workflows/ci-cd.yml`)
 
 **Triggers:**
+
 - Push to `main` or `develop` branches
 - Pull requests to `main`
 
 **Jobs:**
+
 1. **Test & Code Quality**
+
    - Code linting and security audit
    - API endpoint smoke tests
    - Dependency vulnerability checking
 
 2. **Docker Build & Test**
+
    - Multi-platform Docker image building
    - Container registry publishing (GitHub Container Registry)
    - Docker image testing
 
 3. **Security Scanning**
+
    - Trivy vulnerability scanner
    - Results uploaded to GitHub Security tab
 
@@ -48,7 +53,7 @@ This project implements a comprehensive CI/CD pipeline using GitHub Actions for 
 
 ### 4. **Release Automation** (`.github/workflows/release.yml`)
 
-- **Trigger**: Git tags (v*)
+- **Trigger**: Git tags (v\*)
 - **Actions**:
   - Create GitHub releases
   - Generate changelogs
@@ -74,6 +79,7 @@ SLACK_WEBHOOK_URL
 Create environment files for different stages:
 
 **`.env.production`**
+
 ```bash
 NODE_ENV=production
 PORTFOLIO_OWNER=Gerald
@@ -85,6 +91,7 @@ RATE_LIMIT_PER_MINUTE=60
 ```
 
 **`.env.staging`**
+
 ```bash
 NODE_ENV=staging
 PORTFOLIO_OWNER=Gerald
@@ -109,11 +116,13 @@ Configure branch protection for `main`:
 Create environments in `Settings → Environments`:
 
 **Production Environment:**
+
 - Add protection rules (require reviews)
 - Add environment secrets
 - Add deployment branch rule: `main`
 
 **Staging Environment:**
+
 - Add environment secrets
 - Add deployment branch rule: `develop`
 
@@ -122,19 +131,23 @@ Create environments in `Settings → Environments`:
 ### Development Workflow
 
 1. **Feature Development**
+
    ```bash
    git checkout -b feature/new-feature
    # Make changes
    git push origin feature/new-feature
    ```
+
    - Creates PR → triggers CI tests
 
 2. **Staging Deployment**
+
    ```bash
    git checkout develop
    git merge feature/new-feature
    git push origin develop
    ```
+
    - Triggers staging deployment
 
 3. **Production Deployment**
@@ -151,22 +164,26 @@ Create environments in `Settings → Environments`:
 git tag -a v1.2.0 -m "Release v1.2.0"
 git push origin v1.2.0
 ```
+
 - Creates GitHub release
 - Builds release containers
 
 ## 📊 Monitoring & Observability
 
 ### Container Registry
+
 - Images are stored in GitHub Container Registry
 - Automatic cleanup of old versions
 - Security scanning with Trivy
 
 ### Health Monitoring
+
 - Automated health checks in deployments
 - Container health checks every 30 seconds
 - Post-deployment verification
 
 ### Security
+
 - Dependency vulnerability scanning
 - Container image security scanning
 - Automated security patches via dependency updates
@@ -176,10 +193,12 @@ git push origin v1.2.0
 ### Supported Platforms
 
 1. **Docker/Docker Compose** ✅
+
    - Local development
    - Self-hosted servers
 
 2. **Kubernetes** ✅
+
    - Production clusters
    - Auto-scaling support
 
@@ -193,12 +212,14 @@ git push origin v1.2.0
 ### Platform-Specific Setup
 
 **Vercel:**
+
 ```bash
 npm install -g vercel
 vercel --prod
 ```
 
 **Railway:**
+
 ```bash
 npm install -g @railway/cli
 railway login
@@ -206,6 +227,7 @@ railway up
 ```
 
 **Docker:**
+
 ```bash
 docker pull ghcr.io/yourusername/gerald-portfolio-chatbot:latest
 docker run -p 5000:5000 --env-file .env.production ghcr.io/yourusername/gerald-portfolio-chatbot:latest
@@ -214,12 +236,14 @@ docker run -p 5000:5000 --env-file .env.production ghcr.io/yourusername/gerald-p
 ## 🔍 Testing
 
 ### Automated Tests
+
 - API endpoint testing
 - Health check validation
 - Error handling verification
 - Container functionality testing
 
 ### Manual Testing
+
 ```bash
 # Run tests locally
 npm test
@@ -235,12 +259,14 @@ docker run --rm -p 5001:5000 -e AI_PROVIDER=fallback ghcr.io/yourusername/gerald
 ## 📈 Performance
 
 ### Optimization Features
+
 - Multi-stage Docker builds
 - Layer caching for faster builds
 - Parallel job execution
 - Conditional deployments
 
 ### Resource Usage
+
 - Build time: ~2-3 minutes
 - Docker image size: ~150MB (Alpine-based)
 - Memory usage: ~100MB runtime
@@ -248,6 +274,7 @@ docker run --rm -p 5001:5000 -e AI_PROVIDER=fallback ghcr.io/yourusername/gerald
 ## 🛡️ Security Best Practices
 
 ### Implementation
+
 - ✅ Non-root container user
 - ✅ Minimal base image (Alpine)
 - ✅ Dependency vulnerability scanning
@@ -257,6 +284,7 @@ docker run --rm -p 5001:5000 -e AI_PROVIDER=fallback ghcr.io/yourusername/gerald
 - ✅ Rate limiting
 
 ### Recommendations
+
 - Regularly update dependencies
 - Monitor security advisories
 - Review container scan results
@@ -265,6 +293,7 @@ docker run --rm -p 5001:5000 -e AI_PROVIDER=fallback ghcr.io/yourusername/gerald
 ## 📝 Maintenance
 
 ### Regular Tasks
+
 - Weekly dependency updates (automated)
 - Monthly security reviews
 - Quarterly pipeline optimization
@@ -273,16 +302,19 @@ docker run --rm -p 5001:5000 -e AI_PROVIDER=fallback ghcr.io/yourusername/gerald
 ### Troubleshooting
 
 **Build Failures:**
+
 - Check GitHub Actions logs
 - Verify environment variables
 - Test locally with same conditions
 
 **Deployment Failures:**
+
 - Check container logs
 - Verify health endpoints
 - Check resource availability
 
 **Security Issues:**
+
 - Review Trivy scan results
 - Update vulnerable dependencies
 - Check GitHub Security tab

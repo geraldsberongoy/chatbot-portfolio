@@ -3,37 +3,37 @@ name: Release
 on:
   push:
     tags:
-      - 'v*'
+      - "v*"
 
 jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
-          
+          node-version: "18"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Build Docker image for release
         run: |
           docker build -t gerald-portfolio-chatbot:${{ github.ref_name }} .
-          
+
       - name: Generate changelog
         id: changelog
         run: |
           echo "changelog<<EOF" >> $GITHUB_OUTPUT
           git log $(git describe --tags --abbrev=0 HEAD^)..HEAD --oneline --no-merges >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-          
+
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
@@ -43,15 +43,15 @@ jobs:
           release_name: Release ${{ github.ref_name }}
           body: |
             ## 🚀 Gerald's Portfolio Chatbot ${{ github.ref_name }}
-            
+
             ### Changes:
             ${{ steps.changelog.outputs.changelog }}
-            
+
             ### Docker Image:
             ```bash
             docker pull ghcr.io/${{ github.repository }}:${{ github.ref_name }}
             ```
-            
+
             ### Quick Start:
             ```bash
             docker run -p 5000:5000 -e AI_PROVIDER=fallback ghcr.io/${{ github.repository }}:${{ github.ref_name }}

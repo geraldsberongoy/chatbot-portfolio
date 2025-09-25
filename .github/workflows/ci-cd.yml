@@ -2,59 +2,59 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [main, develop]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 env:
   DOCKER_IMAGE_NAME: gerald-portfolio-chatbot
   REGISTRY: ghcr.io
-  
+
 jobs:
   # ===== TESTING & CODE QUALITY =====
   test:
     name: Test & Code Quality
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          cache: 'npm'
-          
+          node-version: "18"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm ci
-        
+
       - name: Lint code
         run: |
           # Add ESLint if you want
           echo "Running code quality checks..."
           # npm run lint
-          
+
       - name: Run security audit
         run: npm audit --audit-level=high
-        
+
       - name: Check for vulnerabilities
         run: |
           # Install and run safety checks
           npm install --no-save snyk
           npx snyk test --json || true
-          
+
       - name: Test API endpoints (smoke tests)
         run: |
           # Start server in background
           npm start &
           SERVER_PID=$!
           sleep 10
-          
+
           # Test health endpoint
           curl -f http://localhost:5000/api/v1/health || exit 1
           curl -f http://localhost:5000/api/v1/docs || exit 1
-          
+
           # Kill server
           kill $SERVER_PID
         env:
@@ -67,25 +67,25 @@ jobs:
     name: Docker Build & Test
     runs-on: ubuntu-latest
     needs: test
-    
+
     outputs:
       image-tag: ${{ steps.meta.outputs.tags }}
       image-digest: ${{ steps.build.outputs.digest }}
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-        
+
       - name: Log in to Container Registry
         uses: docker/login-action@v3
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-          
+
       - name: Extract metadata
         id: meta
         uses: docker/metadata-action@v5
@@ -96,7 +96,7 @@ jobs:
             type=ref,event=pr
             type=sha,prefix={{branch}}-
             type=raw,value=latest,enable={{is_default_branch}}
-            
+
       - name: Build and push Docker image
         id: build
         uses: docker/build-push-action@v5
@@ -108,7 +108,7 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-          
+
       - name: Test Docker image
         run: |
           # Test the built image
@@ -118,14 +118,14 @@ jobs:
             -e NODE_ENV=test \
             -e AI_PROVIDER=fallback \
             ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}
-          
+
           # Wait for container to be ready
           sleep 15
-          
+
           # Test endpoints
           curl -f http://localhost:5001/api/v1/health
           curl -f http://localhost:5001/api/v1/docs
-          
+
           # Cleanup
           docker stop test-chatbot
 
@@ -135,22 +135,22 @@ jobs:
     runs-on: ubuntu-latest
     needs: docker-build
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        
+
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@master
         with:
           image-ref: ${{ env.REGISTRY }}/${{ github.repository }}:${{ github.sha }}
-          format: 'sarif'
-          output: 'trivy-results.sarif'
-          
+          format: "sarif"
+          output: "trivy-results.sarif"
+
       - name: Upload Trivy scan results to GitHub Security tab
         uses: github/codeql-action/upload-sarif@v3
         with:
-          sarif_file: 'trivy-results.sarif'
+          sarif_file: "trivy-results.sarif"
 
   # ===== DEPLOYMENT TO STAGING =====
   deploy-staging:
@@ -159,7 +159,7 @@ jobs:
     needs: [docker-build, test]
     if: github.ref == 'refs/heads/develop'
     environment: staging
-    
+
     steps:
       - name: Deploy to staging
         run: |
@@ -167,7 +167,7 @@ jobs:
           echo "Image: ${{ needs.docker-build.outputs.image-tag }}"
           # Add your staging deployment commands here
           # For example: kubectl, docker-compose, or cloud provider CLI
-          
+
       - name: Run staging tests
         run: |
           echo "🧪 Running staging integration tests..."
@@ -180,19 +180,19 @@ jobs:
     needs: [docker-build, test, security-scan]
     if: github.ref == 'refs/heads/main'
     environment: production
-    
+
     steps:
       - name: Deploy to production
         run: |
           echo "🚀 Deploying to production environment..."
           echo "Image: ${{ needs.docker-build.outputs.image-tag }}"
           # Add your production deployment commands here
-          
+
       - name: Post-deployment verification
         run: |
           echo "✅ Running production health checks..."
           # Add production verification tests
-          
+
       - name: Notify deployment success
         run: |
           echo "✅ Production deployment successful!"
