@@ -8,8 +8,8 @@ export default [
       "no-console": "off",
       "prefer-const": "error",
       "no-var": "error",
-      "semi": ["error", "always"],
-      "quotes": ["error", "double"]
+      semi: ["error", "always"],
+      quotes: ["error", "double"],
     },
     languageOptions: {
       ecmaVersion: 2022,
@@ -22,11 +22,11 @@ export default [
         __filename: "readonly",
         URL: "readonly",
         setTimeout: "readonly",
-        clearTimeout: "readonly"
-      }
-    }
+        clearTimeout: "readonly",
+      },
+    },
   },
   {
-    ignores: ["node_modules/**", "dist/**", "build/**", ".git/**"]
-  }
+    ignores: ["node_modules/**", "dist/**", "build/**", ".git/**"],
+  },
 ];
