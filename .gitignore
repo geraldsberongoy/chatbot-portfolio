@@ -29,7 +29,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # Package lock files (choose one)
-package-lock.json
+# package-lock.json
 # yarn.lock
 
 # =============================
