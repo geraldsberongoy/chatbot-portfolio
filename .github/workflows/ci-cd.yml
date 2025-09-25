@@ -114,7 +114,7 @@ jobs:
           # Get the first tag from the metadata output
           IMAGE_TAG=$(echo '${{ steps.meta.outputs.tags }}' | head -n1)
           echo "Testing image: $IMAGE_TAG"
-          
+
           # Test the built image
           docker run --rm -d \
             --name test-chatbot \
