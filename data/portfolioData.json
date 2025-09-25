@@ -1,0 +1,102 @@
+{
+  "profile": "I am a tech-driven Computer Engineering student passionate about software development. With hands-on experience in web development and real-time systems, I enjoy building innovative projects that solve real-world problems. My involvement in Google Developer Groups has expanded my technical expertise, particularly in front-end development. I am eager to collaborate, learn, and contribute to projects that push the boundaries of technology.",
+
+  "experience": [
+    {
+      "organization": "Google Developer Group, Sta. Mesa, Manila",
+      "role": "Web Development Curriculum Analyst",
+      "date": "Nov 2024 - Aug 2025",
+      "highlights": [
+        "Developed and analyzed web development curricula, mentoring cadets for technical excellence.",
+        "Taught a study jam session on HTML and CSS, helping members build foundational knowledge.",
+        "Participated in Sparkfest Hackathon website development."
+      ]
+    },
+    {
+      "organization": "AWS Cloud Club, Sta. Mesa, Manila",
+      "role": "Department of Cloud Computing and Infrastructure Member",
+      "date": "Oct 2024 - Aug 2025",
+      "highlights": [
+        "Completed training on AWS Cloud Services, focusing on infrastructure and deployment models.",
+        "Explored compute, storage, and database services, including EC2, S3, and RDS."
+      ]
+    }
+  ],
+
+  "education": {
+    "school": "Polytechnic University of the Philippines, Sta. Mesa, Manila",
+    "degree": "B.S. in Computer Engineering",
+    "graduation": "Expected July 2027",
+    "coursework": [
+      "Programming Logic and Design",
+      "Object-Oriented Programming",
+      "Operating Systems",
+      "Data Structures and Algorithms",
+      "Computer Hardware Fundamentals",
+      "Fundamentals of Electrical Circuits",
+      "Computer-Aided Drafting"
+    ],
+    "scholarships": ["SM Foundation Scholar", "LANI Scholarship (Local LGU)"]
+  },
+
+  "skills": {
+    "languages": ["Python", "JavaScript", "PHP", "HTML", "CSS"],
+    "frameworks": [
+      "React", "Vite", "Tailwind", "Bootstrap",
+      "Node", "Express", "Flask", "SqlAlchemy"
+    ],
+    "databases": ["SQL", "NoSQL", "SQLite3", "MongoDB"],
+    "tools": ["Figma", "VS Code", "Git", "GitHub", "Microsoft Office", "AutoCAD"]
+  },
+
+  "projects": [
+    {
+      "name": "Face Recognition with Attendance and Email System",
+      "stack": ["Python", "OpenCV", "Tkinter", "Pillow", "smtplib"],
+      "details": [
+        "Tkinter-based GUI for attendance system with real-time facial detection.",
+        "Automated email notifications with smtplib."
+      ]
+    },
+    {
+      "name": "Student Curricular Activity Manager App",
+      "stack": ["Python", "Flask", "SQLAlchemy", "Flask-SocketIO", "JWT", "Tkinter"],
+      "details": [
+        "GUI with flashcards, progress tracker, and collaborative notebook.",
+        "Real-time updates via Flask-SocketIO.",
+        "JWT authentication and SQLAlchemy database management."
+      ]
+    },
+    {
+      "name": "Data Structure & Algorithm Visualization",
+      "stack": ["React", "Tailwind CSS", "Vercel"],
+      "details": [
+        "Interactive DSA Visualizer for CMPE 201 class.",
+        "Dynamic animations to improve algorithm comprehension."
+      ]
+    },
+    {
+      "name": "Sparkfest 2025 Hackathon Website",
+      "stack": ["Next.js", "TypeScript", "React", "Vercel"],
+      "details": [
+        "Contributed to GDG PUP Hackathon website.",
+        "Developed responsive, accessible, and scalable UI."
+      ]
+    }
+  ],
+
+  "certifications": [
+    {
+      "title": "DataCamp Scholar",
+      "issuer": "DataCamp",
+      "date": "Dec 2024",
+      "note": "Awarded for excellence in data engineering through Data Engineering Philippines."
+    }
+  ],
+
+  "contact": {
+    "email": "gerald@example.com",
+    "linkedin": "https://linkedin.com/in/gerald",
+    "github": "https://github.com/gerald"
+  }
+}
