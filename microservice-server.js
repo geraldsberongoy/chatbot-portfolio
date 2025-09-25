@@ -152,7 +152,7 @@ app.post(
   authenticateAPI,
   async (req, res) => {
     try {
-      const { message, context } = req.body;
+      const { message } = req.body;
 
       if (!message) {
         return res.status(400).json({
@@ -332,7 +332,7 @@ app.get("/", (req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
+app.use((err, req, res, _next) => {
   console.error("Unhandled error:", err);
   res.status(500).json({
     error: "Internal server error",
@@ -359,7 +359,7 @@ app.listen(PORT, () => {
   console.log(`🚀 Portfolio Chatbot Microservice running on port ${PORT}`);
   console.log(`👤 Portfolio Owner: ${PORTFOLIO_OWNER}`);
   console.log(`🤖 AI Provider: ${AI_PROVIDER}`);
-  console.log(`📊 Available providers:`, {
+  console.log("📊 Available providers:", {
     gemini: !!geminiClient,
     fallback: true,
   });

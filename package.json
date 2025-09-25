@@ -14,7 +14,8 @@
     "test": "node test/api-test.js",
     "test:health": "curl -f http://localhost:5000/api/v1/health",
     "test:api": "node test/api-test.js",
-    "lint": "echo 'Linting placeholder - add ESLint if needed'",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
     "security": "npm audit --audit-level=high",
     "old-start": "node server-updated.js"
   },
@@ -26,6 +27,8 @@
     "openai": "^4.20.1"
   },
   "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "eslint": "^9.36.0",
     "nodemon": "^3.0.1"
   },
   "keywords": [
