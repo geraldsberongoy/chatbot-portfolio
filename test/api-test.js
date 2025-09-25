@@ -94,7 +94,7 @@ const tests = [
     test: async () => {
       const res = await makeRequest("/api/v1/chat", {
         method: "POST",
-        body: '{"message":"test",', // Invalid JSON
+        body: "{\"message\":\"test\",", // Invalid JSON
       });
       if (res.status !== 400)
         throw new Error(`Expected 400, got ${res.status}`);
