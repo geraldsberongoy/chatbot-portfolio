@@ -218,13 +218,7 @@ In all workflow files, replace:
 ```yaml
 REGISTRY: ghcr.io
 # Change this line in ci-cd.yml:
-image-ref: ghcr.io/yourusername/gerald-portfolio-chatbot
-```
-
-To match your GitHub username:
-
-```yaml
-image-ref: ghcr.io/YOUR-GITHUB-USERNAME/gerald-portfolio-chatbot
+image-ref: ghcr.io/yourusername/your-repository-name
 ```
 
 ### 6.2 Update Domain Names
