@@ -19,7 +19,7 @@
   },
   "env": {
     "GEMINI_API_KEY": "@gemini_api_key",
-    "PORTFOLIO_OWNER": "@portfolio_owner", 
+    "PORTFOLIO_OWNER": "@portfolio_owner",
     "PORTFOLIO_DATA_PATH": "@portfolio_data_path",
     "RATE_LIMIT_PER_MINUTE": "@rate_limit_per_minute",
     "NODE_ENV": "production"
