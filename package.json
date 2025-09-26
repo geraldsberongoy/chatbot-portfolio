@@ -5,9 +5,9 @@
   "main": "server.js",
   "type": "module",
   "scripts": {
-    "start": "node microservice-server.js",
-    "dev": "nodemon microservice-server.js",
-    "microservice": "node microservice-server.js",
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "microservice": "node server.js",
     "docker:build": "docker build -t portfolio-chatbot .",
     "docker:run": "docker run -p 5000:5000 --env-file .env portfolio-chatbot",
     "docker:compose": "docker-compose up -d",
