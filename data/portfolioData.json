@@ -42,11 +42,24 @@
   "skills": {
     "languages": ["Python", "JavaScript", "PHP", "HTML", "CSS"],
     "frameworks": [
-      "React", "Vite", "Tailwind", "Bootstrap",
-      "Node", "Express", "Flask", "SqlAlchemy"
+      "React",
+      "Vite",
+      "Tailwind",
+      "Bootstrap",
+      "Node",
+      "Express",
+      "Flask",
+      "SqlAlchemy"
     ],
     "databases": ["SQL", "NoSQL", "SQLite3", "MongoDB"],
-    "tools": ["Figma", "VS Code", "Git", "GitHub", "Microsoft Office", "AutoCAD"]
+    "tools": [
+      "Figma",
+      "VS Code",
+      "Git",
+      "GitHub",
+      "Microsoft Office",
+      "AutoCAD"
+    ]
   },
 
   "projects": [
@@ -60,7 +73,14 @@
     },
     {
       "name": "Student Curricular Activity Manager App",
-      "stack": ["Python", "Flask", "SQLAlchemy", "Flask-SocketIO", "JWT", "Tkinter"],
+      "stack": [
+        "Python",
+        "Flask",
+        "SQLAlchemy",
+        "Flask-SocketIO",
+        "JWT",
+        "Tkinter"
+      ],
       "details": [
         "GUI with flashcards, progress tracker, and collaborative notebook.",
         "Real-time updates via Flask-SocketIO.",
