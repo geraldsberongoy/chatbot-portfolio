@@ -2,10 +2,16 @@ import express from "express";
 import cors from "cors";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { FallbackChatbot } from "./src/fallbackResponses.js";
 
 dotenv.config();
+
+// Fix for ES modules __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -47,14 +53,24 @@ app.use((err, req, res, next) => {
 const API_VERSION = "/api/v1";
 
 // Load portfolio data (make it configurable)
-const portfolioDataPath =
-  process.env.PORTFOLIO_DATA_PATH || "./data/portfolioData.json";
+const portfolioDataPath = process.env.PORTFOLIO_DATA_PATH
+  ? path.resolve(__dirname, process.env.PORTFOLIO_DATA_PATH)
+  : path.resolve(__dirname, "data", "portfolioData.json");
 let portfolioData;
 
 try {
+  console.log(`Loading portfolio data from: ${portfolioDataPath}`);
   portfolioData = JSON.parse(fs.readFileSync(portfolioDataPath, "utf8"));
+  console.log(
+    `✅ Portfolio data loaded successfully for: ${
+      portfolioData.profile
+        ? portfolioData.profile.substring(0, 50) + "..."
+        : "Unknown"
+    }`
+  );
 } catch (error) {
-  console.error("Failed to load portfolio data:", error.message);
+  console.error("❌ Failed to load portfolio data:", error.message);
+  console.error("Attempted path:", portfolioDataPath);
   portfolioData = {
     profile: "Portfolio data not configured",
     projects: [],
