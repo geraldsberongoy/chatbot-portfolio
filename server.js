@@ -354,17 +354,25 @@ app.use("*", (req, res) => {
   });
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Portfolio Chatbot Microservice running on port ${PORT}`);
-  console.log(`👤 Portfolio Owner: ${PORTFOLIO_OWNER}`);
-  console.log(`🤖 AI Provider: ${AI_PROVIDER}`);
-  console.log("📊 Available providers:", {
-    gemini: !!geminiClient,
-    fallback: true,
+// Export the Express app for Vercel
+export default app;
+
+// Only start the server if we're not in production (for local development)
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 5000;
+  app.listen(PORT, () => {
+    console.log(`🚀 Portfolio Chatbot Microservice running on port ${PORT}`);
+    console.log(`👤 Portfolio Owner: ${PORTFOLIO_OWNER}`);
+    console.log(`🤖 AI Provider: ${AI_PROVIDER}`);
+    console.log("📊 Available providers:", {
+      gemini: !!geminiClient,
+      fallback: true,
+    });
+    console.log(
+      `🌐 API Documentation: http://localhost:${PORT}${API_VERSION}/docs`
+    );
+    console.log(
+      `💚 Health Check: http://localhost:${PORT}${API_VERSION}/health`
+    );
   });
-  console.log(
-    `🌐 API Documentation: http://localhost:${PORT}${API_VERSION}/docs`
-  );
-  console.log(`💚 Health Check: http://localhost:${PORT}${API_VERSION}/health`);
-});
+}
