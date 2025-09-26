@@ -183,7 +183,7 @@ Your Response:`;
       if (AI_PROVIDER === "gemini" && geminiClient) {
         try {
           const model = geminiClient.getGenerativeModel({
-            model: "gemini-1.5-flash",
+            model: "gemini-2.5-pro",
           });
           const result = await model.generateContent(prompt);
           const response = await result.response;
