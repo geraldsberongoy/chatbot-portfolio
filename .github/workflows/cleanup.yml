@@ -20,15 +20,15 @@ jobs:
         run: |
           # Check if the package exists using GitHub API
           PACKAGE_NAME="${{ github.repository }}"
-          
+
           echo "Checking for package: $PACKAGE_NAME"
-          
+
           # Use GitHub API to check if package exists
           RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/users/${{ github.repository_owner }}/packages/container/${{ github.event.repository.name }}")
-          
+
           if [ "$RESPONSE" == "200" ]; then
             echo "package-exists=true" >> $GITHUB_OUTPUT
             echo "✅ Package exists, proceeding with cleanup"
