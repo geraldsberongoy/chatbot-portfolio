@@ -2,7 +2,7 @@
   "name": "gerald-portfolio-chatbot",
   "version": "1.0.0",
   "description": "A chatbot for Gerald's portfolio website",
-  "main": "server.js",
+  "main": "index.js",
   "type": "module",
   "scripts": {
     "start": "node server.js",
@@ -24,6 +24,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "firebase-admin": "^13.6.0",
+    "firebase-functions": "^7.0.2",
     "openai": "^4.20.1"
   },
   "devDependencies": {

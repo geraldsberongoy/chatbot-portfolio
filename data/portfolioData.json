@@ -1,32 +1,41 @@
 {
   "profile": "I am a tech-driven Computer Engineering student passionate about software development. With hands-on experience in web development and real-time systems, I enjoy building innovative projects that solve real-world problems. My involvement in Google Developer Groups has expanded my technical expertise, particularly in front-end development. I am eager to collaborate, learn, and contribute to projects that push the boundaries of technology.",
-
   "experience": [
     {
-      "organization": "Google Developer Group, Sta. Mesa, Manila",
-      "role": "Web Development Curriculum Analyst",
-      "date": "Nov 2024 - Aug 2025",
+      "organization": "AWS Cloud Club PUP",
+      "role": "Frontend Lead Developer",
+      "date": "September 2025 - Present",
       "highlights": [
-        "Developed and analyzed web development curricula, mentoring cadets for technical excellence.",
-        "Taught a study jam session on HTML and CSS, helping members build foundational knowledge.",
-        "Participated in Sparkfest Hackathon website development."
+        "Directed the frontend engineering team, establishing rigorous coding standards and scalable architecture patterns to ensure code maintainability and consistency.",
+        "Architected high-performance web applications using React and Astro, optimizing component modularity for organization-wide projects.",
+        "Engineered automated CI/CD workflows using Github Actions to streamline deployments into the AWS ecosystem, utilizing S3 for static pages, CloudFront for content delivery, and Route 53 for DNS management."
       ]
     },
     {
-      "organization": "AWS Cloud Club, Sta. Mesa, Manila",
-      "role": "Department of Cloud Computing and Infrastructure Member",
-      "date": "Oct 2024 - Aug 2025",
+      "organization": "Google Developer Groups on Campus PUP",
+      "role": "Web Development Learning Head",
+      "date": "September 2025 - Present",
       "highlights": [
-        "Completed training on AWS Cloud Services, focusing on infrastructure and deployment models.",
-        "Explored compute, storage, and database services, including EC2, S3, and RDS."
+        "Engineered scalable internal organization platforms, including the GDG Photobooth and ID System, utilizing Next.js for server-side rendering and Firebase for real-time data management.",
+        "Designed and delivered a 'Zero to Hero' technical curriculum for 150+ student cadets, guiding participants from fundamental HTML/CSS/JavaScript through to full-stack development with React and Express.js.",
+        "Collaborated with cross-functional teams to integrate web solutions for campus events, ensuring cross-browser compatibility and system reliability during high-traffic periods."
+      ]
+    },
+    {
+      "organization": "University Teaching and Learning Development Office - PUP Manila",
+      "role": "Learning Management System (LMS) Technical Support Intern",
+      "date": "July 2025 - September 2025",
+      "highlights": [
+        "Supported and maintained PUP's Moodle LMS, addressing user access and course issues.",
+        "Applied PHP and MySQL to explore Moodle’s codebase and develop automation scripts for LMS-related administrative tasks.",
+        "Assisted with faculty workshops and seminars on LMS and AI tools, including technical support and documentation creation."
       ]
     }
   ],
-
   "education": {
-    "school": "Polytechnic University of the Philippines, Sta. Mesa, Manila",
-    "degree": "B.S. in Computer Engineering",
-    "graduation": "Expected July 2027",
+    "school": "Polytechnic University of the Philippines",
+    "degree": "B.S in Computer Engineering",
+    "graduation": "Expected Graduation, July 2027",
     "coursework": [
       "Programming Logic and Design",
       "Object-Oriented Programming",
@@ -36,75 +45,184 @@
       "Fundamentals of Electrical Circuits",
       "Computer-Aided Drafting"
     ],
-    "scholarships": ["SM Foundation Scholar", "LANI Scholarship (Local LGU)"]
-  },
-
-  "skills": {
-    "languages": ["Python", "JavaScript", "PHP", "HTML", "CSS"],
-    "frameworks": [
-      "React",
-      "Vite",
-      "Tailwind",
-      "Bootstrap",
-      "Node",
-      "Express",
-      "Flask",
-      "SqlAlchemy"
-    ],
-    "databases": ["SQL", "NoSQL", "SQLite3", "MongoDB"],
-    "tools": [
-      "Figma",
-      "VS Code",
-      "Git",
-      "GitHub",
-      "Microsoft Office",
-      "AutoCAD"
+    "scholarships": [
+      "SM Foundation Scholar",
+      "LANI Scholarship (Local LGU)"
     ]
   },
-
+  "skills": {
+    "languages": [
+      "Python",
+      "JavaScript",
+      "Typescript",
+      "PHP",
+      "HTML",
+      "CSS"
+    ],
+    "frameworks": [
+      "React",
+      "Astro",
+      "NextJS",
+      "Tailwind",
+      "Bootstrap",
+      "NodeJS",
+      "Express",
+      "Flask",
+      "FastAPI",
+      "SqlAlchemy"
+    ],
+    "databases": [
+      "MySQL",
+      "PostgreSQL",
+      "NoSQL",
+      "Sqlite3",
+      "MongoDB",
+      "Firebase",
+      "Supabase",
+      "Neon"
+    ],
+    "tools": [
+      "Figma",
+      "Visual Studio Code",
+      "Git",
+      "GitHub",
+      "Docker",
+      "Microsoft Office",
+      "AutoCAD",
+      "AWS",
+      "GCP"
+    ]
+  },
   "projects": [
     {
-      "name": "Face Recognition with Attendance and Email System",
-      "stack": ["Python", "OpenCV", "Tkinter", "Pillow", "smtplib"],
-      "details": [
-        "Tkinter-based GUI for attendance system with real-time facial detection.",
-        "Automated email notifications with smtplib."
-      ]
-    },
-    {
-      "name": "Student Curricular Activity Manager App",
+      "name": "AWS CertEval",
       "stack": [
-        "Python",
-        "Flask",
-        "SQLAlchemy",
-        "Flask-SocketIO",
-        "JWT",
-        "Tkinter"
+        "React",
+        "TypeScript",
+        "FastAPI",
+        "AWS"
       ],
       "details": [
-        "GUI with flashcards, progress tracker, and collaborative notebook.",
-        "Real-time updates via Flask-SocketIO.",
-        "JWT authentication and SQLAlchemy database management."
-      ]
+        "Automated the distribution of participation certificates by building a secure verification pipeline using Python and FastAPI.",
+        "Engineered a validation logic that gates certificate access behind membership verification and mandatory survey completion, ensuring data integrity.",
+        "Streamlined the post-event operations workflow, eliminating manual certificate generation for club administrators."
+      ],
+      "link": "https://certeval.awsccph.org"
+    },
+     {
+      "name": "IslaGrid (Meralco IDOL Hackathon Finalist)",
+      "stack": [
+        "React",
+        "AI",
+        "Geospatial",
+        "TailwindCSS"
+      ],
+      "details": [
+        "Secured Top 11 Finalist status among 48 teams by pitching a community-driven renewable energy ecosystem to Meralco executives.",
+        "Developed a platform enabling the community to harness the location’s renewable energy potential, utilizing AI-assisted chatbot for clean energy access and application."
+      ],
+      "link": "http://isla-gridclient.vercel.app"
     },
     {
-      "name": "Data Structure & Algorithm Visualization",
-      "stack": ["React", "Tailwind CSS", "Vercel"],
+      "name": "AWS Skill Builder LMS",
+      "stack": [
+        "React",
+        "TypeScript",
+        "Express.js",
+        "Supabase",
+        "AWS"
+      ],
       "details": [
-        "Interactive DSA Visualizer for CMPE 201 class.",
-        "Dynamic animations to improve algorithm comprehension."
-      ]
+        "Developed and implemented a centralized, gamified Learning Management System (LMS) for the AWS Cloud Club, effectively replacing manual tracking with an automated, unified platform to streamline member learning.",
+        "Deployed the solution on AWS, integrating secure authentication and resource management to support student upskilling tracks.",
+        "Optimized data retrieval for assignments and peer recognition, significantly improving user engagement and resource accessibility."
+      ],
+       "link": "https://sbd.pup.awsccph.org/"
     },
     {
-      "name": "Sparkfest 2025 Hackathon Website",
-      "stack": ["Next.js", "TypeScript", "React", "Vercel"],
+      "name": "GDG ID Platform",
+      "stack": [
+        "Next.js",
+        "TypeScript",
+        "Tailwind CSS",
+        "Firebase Admin",
+        "Google Cloud"
+      ],
       "details": [
-        "Contributed to GDG PUP Hackathon website.",
-        "Developed responsive, accessible, and scalable UI."
+        "Built an automated digital ID generation system allowing members to render and download branded ID cards via HTML5 Canvas and PDF conversion.",
+        "Implemented secure admin workflows using Firebase Admin Auth and rate limiting to protect contact form submissions.",
+        "Integrated Google Sheets API for real-time member verification ('Smart Search'), reducing manual cross-checking of registration lists."
+      ],
+       "link": "https://gdg-id-platform.vercel.app/"
+    },
+   
+    {
+      "name": "CPE Fair Web Application",
+      "stack": [
+        "Next.js",
+        "Express",
+        "TypeScript",
+        "Supabase"
+      ],
+      "details": [
+        "Designed an immersive, 'Genshin Impact'-themed event management system with a real-time game leaderboard, enhancing attendee engagement.",
+        "Orchestrated the full-stack development using Express.js for backend logic and Supabase for real-time score updates during the university fair."
+      ],
+       "link": "https://cpefair2025.vercel.app"
+    },
+    {
+      "name": "Face Recognition with Attendance and Email System",
+      "stack": [
+        "Python",
+        "OpenCV",
+        "Tkinter",
+        "Pillow",
+        "smtplib"
+      ],
+      "details": [
+        "Developed a Tkinter-based GUI for an attendance system utilizing OpenCV and Face Recognition for real-time facial detection.",
+        "Integrated Pillow for image processing and smtplib for automated email notifications, ensuring seamless log file delivery to Gmail."
       ]
+    }, {
+    "name": "AWS - TedxPup Challenge",
+    "stack": ["HTML", "CSS", "JavaScript"],
+    "details": ["A web application challenge project for the inital requirements for AWSCC Application. Developed using vanilla JavaScript, HTML, and CSS."],
+    "link": "https://geraldsberongoy.github.io/tedx-pup-website/"
+    },
+    {
+    "name": "Isko-Chat Ai",
+    "stack": ["Next.js", "Supabase", "TailwindCSS", "AI"],
+    "details": ["An app built to assist students in finding scholarships and educational resources. A collaborative project and I mainly focus on front-end and back-end development."],
+    "link": "https://iskochatai.vercel.app/"
+    },
+    {
+    "name": "Sparkfest 2025",
+    "stack": ["Web App", "React", "TypeScript", "TailwindCSS"],
+    "details": ["A web application for managing and organizing events for Sparkfest 2025: PUP GDG Hackathon Event. Developed using React and TailwindCSS."],
+     "link": "https://sparkfest-2025.vercel.app/"
+    },
+    {
+    "name": "Password Manager",
+    "stack": ["React.js", "TailwindCSS", "Flask", "SQLite"],
+    "details": ["A CRUD application for securely managing and storing passwords. Mainly explores user authentication and data encryption."]
+    },
+    {
+    "name": "Alertech Web Dashboard",
+    "stack": ["React.js", "TailwindCSS", "Firebase", "IOT"],
+    "details": ["A web dashboard system to monitor realtime fire and gas leak detection. A collaborative project focusing on IoT and real-time data processing. I focused on the front-end development."]
+    },
+    {
+     "name": "DSA Visualizer",
+    "stack": ["DSA", "React.js", "TailwindCSS"],
+    "details": ["A web application to visualize and understand various data structures and algorithms. A school final project showcasing my skills in React and data structures."],
+    "link": "https://rs-cs.vercel.app/"
+    },
+     {
+    "name": "SCAM App",
+    "stack": ["Python", "TKinter", "Flask", "SQLite"],
+    "details": ["A Student Curricular Activity Management app to manage student activities. A school final project mainly focused on full-stack Python development."]
     }
   ],
-
   "certifications": [
     {
       "title": "DataCamp Scholar",
@@ -113,10 +231,9 @@
       "note": "Awarded for excellence in data engineering through Data Engineering Philippines."
     }
   ],
-
   "contact": {
-    "email": "gerald@example.com",
-    "linkedin": "https://linkedin.com/in/gerald",
-    "github": "https://github.com/gerald"
+    "email": "geraldberongoy04@gmail.com",
+    "linkedin": "https://linkedin.com/in/geraldberongoy",
+    "github": "https://github.com/geraldsberongoy"
   }
 }

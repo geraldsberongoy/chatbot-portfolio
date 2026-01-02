@@ -1,0 +1,25 @@
+{
+  "functions": [
+    {
+      "source": ".",
+      "codebase": "default",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        ".env*",
+        "test",
+        "deploy",
+        "docs",
+        "scripts",
+        "Dockerfile",
+        "docker-compose.yml",
+        "*.ps1"
+      ],
+      "predeploy": [
+        "npm run lint"
+      ]
+    }
+  ]
+}

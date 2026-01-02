@@ -114,6 +114,22 @@ const tests = [
     },
   },
   {
+    name: "Portfolio Data",
+    test: async () => {
+      const res = await makeRequest("/api/v1/portfolio");
+      if (res.status !== 200)
+        throw new Error(`Expected 200, got ${res.status}`);
+      
+      const data = res.data.data;
+      if (!data) throw new Error("Missing data field");
+      if (!data.profile) throw new Error("Missing profile");
+      if (!Array.isArray(data.experience)) throw new Error("Experience should be an array");
+      if (!Array.isArray(data.projects)) throw new Error("Projects should be an array");
+      
+      return `✅ Portfolio data valid - Projects: ${data.projects.length}, Version: ${res.data.version}`;
+    },
+  },
+  {
     name: "404 Handler",
     test: async () => {
       const res = await makeRequest("/api/v1/nonexistent");
@@ -126,7 +142,8 @@ const tests = [
 
 // Run tests
 async function runTests() {
-  console.log("🧪 Running Portfolio Chatbot API Tests\n");
+  const results = [];
+  results.push("🧪 Running Portfolio Chatbot API Tests\n");
 
   let passed = 0;
   let failed = 0;
@@ -139,21 +156,27 @@ async function runTests() {
           setTimeout(() => reject(new Error("Test timeout")), TEST_TIMEOUT)
         ),
       ]);
-      console.log(result);
+      results.push(result);
       passed++;
     } catch (error) {
-      console.log(`❌ ${testCase.name} - ${error.message}`);
+      results.push(`❌ ${testCase.name} - ${error.message}`);
       failed++;
     }
   }
 
-  console.log(`\n📊 Test Results: ${passed} passed, ${failed} failed`);
+  results.push(`\n📊 Test Results: ${passed} passed, ${failed} failed`);
+  
+  if (failed === 0) results.push("✅ All tests passed!");
+  
+  console.log(results.join('\n'));
+  
+  // Also write to a file we can check
+  const fs = await import("fs");
+  fs.writeFileSync("test/test-results.txt", results.join('\n'));
 
   if (failed > 0) {
     process.exit(1);
   }
-
-  console.log("✅ All tests passed!");
 }
 
 // Handle unhandled rejections
