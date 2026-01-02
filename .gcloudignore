@@ -9,8 +9,8 @@ test
 docs
 deploy
 scripts
-Dockerfile
-docker-compose.yml
+# Dockerfile
+# docker-compose.yml
 *.ps1
 test-results.txt
 eslint.config.js
