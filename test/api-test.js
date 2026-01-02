@@ -33,7 +33,7 @@ function makeRequest(path, options = {}) {
               data: json,
               headers: res.headers,
             });
-          } catch (_e) {
+          } catch (_e) { // eslint-disable-line no-unused-vars
             resolve({ status: res.statusCode, data, headers: res.headers });
           }
         });
@@ -168,11 +168,11 @@ async function runTests() {
   
   if (failed === 0) results.push("✅ All tests passed!");
   
-  console.log(results.join('\n'));
+  console.log(results.join("\n"));
   
   // Also write to a file we can check
   const fs = await import("fs");
-  fs.writeFileSync("test/test-results.txt", results.join('\n'));
+  fs.writeFileSync("test/test-results.txt", results.join("\n"));
 
   if (failed > 0) {
     process.exit(1);

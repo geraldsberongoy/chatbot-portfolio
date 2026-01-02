@@ -70,7 +70,7 @@ class ChatService {
       // Try to log the error/fallback if possible
       try {
           await storageService.logQuery(message || "error", "error", fallbackResponse);
-      } catch (e) {
+      } catch (_e) {
           // ignore logging error
       }
 

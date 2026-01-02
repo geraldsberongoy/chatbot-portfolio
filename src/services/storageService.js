@@ -44,7 +44,7 @@ class StorageService {
    * Log a chat query for analytics
    */
   async logQuery(message, source, reply) {
-    const timestamp = new Date().toISOString();
+    // const timestamp = new Date().toISOString();
     
     // Always update local in-memory analytics
     localAnalytics.totalQueries++;
